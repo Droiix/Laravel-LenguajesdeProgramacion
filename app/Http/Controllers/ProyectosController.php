@@ -22,15 +22,18 @@ class ProyectosController extends Controller
      */
     public function create()
     {
-        //
+        return view("projects/new");
     }
 
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
-        //
+        Ejmplo::create($request->all());
+        return redirect('project/')
+            ->with('success', 'Proyecto creado correctamente');
     }
 
     /**
