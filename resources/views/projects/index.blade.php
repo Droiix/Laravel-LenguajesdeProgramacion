@@ -69,13 +69,13 @@
 
     </div>
     <div class="col-9">
-      <p class="fs-1">Listado de Proyectos</p>
+      <p class="fs-1">Listado de Nombres</p>
       <table class="table">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Titulo</th>
-      <th scope="col">Descripcion</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
       <th scope="col">Fecha</th>
     </tr>
   </thead>
