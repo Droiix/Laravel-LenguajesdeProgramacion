@@ -69,13 +69,13 @@
 
     </div>
 <div class="col-9">
-  <p class="fs-1">Agregar Proyecto</p>
+  <p class="fs-1">Agregar Persona</p>
   <form action="{{ route('project.store')}}" method="post">
     @csrf
     @method('POST')
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Nombre</span>
-      <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del Proyecto" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de la persona" aria-label="Username" aria-describedby="basic-addon1">
     </div>
     <div class="input-group">
       <span class="input-group-text">Apellido</span>
