@@ -13,8 +13,8 @@ class ProyectosController extends Controller
      */
     public function index()
     {
-        $proyects = DB::table('ejmplos')->get();
-        return view("projects/index", ['proyectos' => $proyects]);
+        $projects = DB::table('ejmplos')->get();
+        return view("projects/index", ['proyectos' => $projects]);
     }
 
     /**
@@ -47,24 +47,41 @@ class ProyectosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ejmplo $ejmplo)
+    public function edit($id)
     {
-        //
+        $projects = Ejmplo::find($id);
+        return view("projects/update", compact('projects'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ejmplo $ejmplo)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'apellido' => 'required'
+        ]);
+        $projects = Ejmplo::find($id);
+        $projects->update($request->all());
+        return redirect('project/')
+            ->with('success', 'Proyecto actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ejmplo $ejmplo)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
     {
-        //
+
+        $project = Ejmplo::findOrFail($id);
+
+        $project->delete();
+
+        return redirect('project/')
+            ->with('success', 'Proyecto eliminado correctamente.');
     }
 }
