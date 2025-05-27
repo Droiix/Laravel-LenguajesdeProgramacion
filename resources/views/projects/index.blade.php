@@ -71,25 +71,33 @@
     <div class="col-9">
       <p class="fs-1">Listado de Nombres</p>
       <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($proyectos as $project)
-        <tr>
-            <th scope="row">{{ $project->id }}</th>
-            <td>{{ $project->nombre }}</td>
-            <td>{{ $project->apellido }}</td>
-            <td>{{ $project->created_at }}</td>
-        </tr>   
-     @endforeach
-  </tbody>
-</table>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($proyectos as $project)
+              <tr>
+                  <th scope="row">{{ $project->id }}</th>
+                  <td>{{ $project->nombre }}</td>
+                  <td>{{ $project->apellido }}</td>
+                  <td>{{ $project->created_at }}</td>
+                  <td>
+                      <form action="{{ route('project.destroy', $project->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este proyecto?');">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                      </form>
+                  </td>
+              </tr>   
+          @endforeach
+        </tbody>
+      </table>
     </div>
     
     <div class="row">
